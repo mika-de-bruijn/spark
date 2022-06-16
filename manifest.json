@@ -1,0 +1,21 @@
+{
+    "id": "889cc4ea",
+    "name": "Spark",
+    "version": "1.0.0",
+    "description": "Don't waste time. Use spark, and optimize your workflow.",
+    "summary": "Spark is a one-stop Adobe XD toolkit that improves your workflow by doing the things you don't want to. Spark is created by designers, for desigers. Don't waste time. Use spark, and optimize your workflow.",
+    "languages": ["en"],
+    "author": "Mika de Bruijn",
+    "helpUrl": "https://mikadebruijn.eu/spark/help",
+    "host": {
+      "app": "XD",
+      "minVersion": "29.0"
+    },
+    "uiEntryPoints": [
+        {
+            "type": "menu",
+            "label": "Text to Columns",
+            "commandId": "textToColumns"
+        }
+    ]
+  }
