@@ -13,9 +13,9 @@
     },
     "uiEntryPoints": [
         {
-            "type": "menu",
-            "label": "Text to Columns",
-            "commandId": "textToColumns"
+            "type": "panel",
+            "label": "Columns",
+            "panelId": "columnsPanel"
         }
     ]
   }
