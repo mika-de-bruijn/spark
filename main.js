@@ -1,7 +1,5 @@
-let { selection, Text} = require("scenegraph");
-let commands = require("commands");
-let application = require("application");
 let panel;
+let makeColumns = require('./src/columns');
 
 function create() {
     const HTML = `<style>
@@ -58,72 +56,7 @@ function show(event) {
     event.node.appendChild(panel);
 
     panel.querySelector('form').addEventListener("submit", () => {
-        application.editDocument((selection) => {
-            try {
-
-                var obj = selection.items[0];
-                var columns = parseInt(panel.querySelector('#columns').value);
-                var gutter = parseInt(panel.querySelector('#gutter').value);
-                var newWidth = (obj.localBounds.width / columns) - (gutter * (columns - 1) / columns);
-                
-                // if (obj instanceof Text) {
-                //     var substr = obj.text.split(" ");
-                //     var chunkSize = (substr.length / columns);
-                //     var chunkCount = 1;
-                //     for (let i = 0; i < substr.length; i += chunkSize) {
-                //         var chunk = substr.slice(i, i + chunkSize).toString().replace(/,/g," ");
-                //         if(chunkCount <= 1) {
-                //             obj.text = chunk;
-                //             obj.resize(newWidth, obj.localBounds.height);
-                //         } else {
-                //             commands.duplicate();
-                //             var clone = obj;
-                //             clone.text = chunk;
-                //             clone.moveInParentCoordinates(newWidth + gutter, 0);
-                //         }
-                //         chunkCount++;
-                //     }
-                // }
-
-                if (obj instanceof Text) {
-                    var substr = obj.text.split(" ");
-                    var chunkSize = (substr.length / columns);
-                    for (let i = 0; i < columns; i++){
-                        if(i == 0) {
-                            continue;
-                        } else {
-                            var chunkPos = (chunkSize * i);
-                            var chunk = substr.slice(chunkPos, chunkPos + chunkSize).toString().replace(/,/g," ");
-                            console.log(chunkPos + " | " + i)
-                            if(i == 1) {
-                                obj.text = chunk;
-                                obj.resize(newWidth, obj.localBounds.height);
-                            } else if(i > 1) {
-                                commands.duplicate();
-                                obj.text = chunk;
-                                obj.moveInParentCoordinates((newWidth + gutter) * i, 0);
-                                selection.items = obj;
-                            }
-                        }
-                    };
-                }
-                
-                else {
-                    for (let i = 0; i < columns + 1; i++){
-                        if(i <= 1) {
-                            obj.resize(newWidth, obj.localBounds.height);
-                        } else {
-                            commands.duplicate();
-                            obj.moveInParentCoordinates(newWidth + gutter, 0);
-                            selection.items = obj;
-                        }
-                    };
-                }
-
-            } catch (ex) {
-                console.log("Failed", ex); 
-            }
-        });
+        makeColumns(panel);
     });
   }
 }
