@@ -1,7 +1,7 @@
 {
     "id": "889cc4ea",
     "name": "Spark",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "description": "Don't waste time. Use spark, and optimize your workflow.",
     "summary": "Spark is a one-stop Adobe XD toolkit that improves your workflow by doing the things you don't want to. Spark is created by designers, for desigers. Don't waste time. Use spark, and optimize your workflow.",
     "languages": ["en"],
@@ -31,8 +31,13 @@
     "uiEntryPoints": [
         {
             "type": "panel",
-            "label": "Columns",
+            "label": "Columns Generator",
             "panelId": "columnsPanel"
+        },
+        {
+            "type": "panel",
+            "label": "Contrast Checker",
+            "panelId": "contrastPanel"
         }
     ]
   }
