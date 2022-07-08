@@ -18,7 +18,7 @@ function createContrastPanel() {
                 justify-content: space-between;
             }
             .row > * {
-                width: 48%;
+                width: 48.5%;
             }
             #contrast_input .color {
                 border: 1px solid #E1E1E1;
@@ -49,7 +49,20 @@ function createContrastPanel() {
                 border: 1px solid #E1E1E1;
                 padding: 6px;
                 border-radius: 6px;
-                margin-top: 6px
+                margin-top: 6px;
+                background-color: #fff;
+            }
+            #contrast_result .--green {
+                color: #2A843D;
+                background-color: #E3F2E6;
+            }
+            #contrast_result .--yellow {
+                color: #563F09;
+                background-color: #FFF3D6;
+            }
+            #contrast_result .--red {
+                color: #A72C2C;
+                background-color: #FFE4E4;
             }
             #contrast_result .result .ratio,
             #contrast_result .result .text > * {
@@ -59,17 +72,35 @@ function createContrastPanel() {
             }
             #contrast_result .result .ratio {
                 padding: 4px;
-                border-radius: 4px 4px 0 0;
-                background-color: #E9E9E9;
+                border-radius: 4px;
+            }
+            #contrast_result .result .ratio .value {
+                display: flex;
+                align-items: center;
+            }
+            #contrast_result .result .ratio .rating {
+                text-align: right;
+            }
+            #contrast_result .result .text > * {
+                margin: 0;
+                padding: 6px 8px;
+                border-radius: 4px;
+                margin-top: 5px;
+            }
+            #contrast_result tag {
+                font-size: 12px;
+                font-weight: 400;
+                margin-right: 6px;
             }
             #contrast_result .contrast-meta {
                 font-size: 12px;
-                margin-top: 6px;
+                line-height: 16px;
+                margin-top: 12px;
                 margin-left: 0;
                 font-weight: 400;
             }
             #contrast_result a {
-                margin-top: 6px;
+                margin-top: 0px;
                 font-size: 12px;
             }
         </style>
@@ -159,13 +190,13 @@ function checkContrast(fg, bg) {
         panel.querySelector('#contrast_result').innerHTML =
         "<label class='ui-label'>Contrast</span>" +
         "<div class='result'>" +
-            "<div class='ratio row" + general_c + "'>" + 
-                "<span class='value'>Ratio: " + data.ratio + "</span>" +
-                "<span class='ratio'>" + rating + "</span>" +
+            "<div class='ratio row " + general_c + "'>" + 
+                "<span class='value'><tag>Ratio </tag>" + data.ratio + "</span>" +
+                "<span class='rating'>" + rating + "</span>" +
             "</div>" +
             "<div class='text row'>" +
-                "<span class='small-text" + general_c + "'><tag>Small text</tag>" + data.AA + "</span>" +
-                "<span class='large-text" + large_c + "'><tag>Large text</tag>" + data.AALarge + "</span>" +
+                "<span class='small-text " + general_c + "'><tag>Small text</tag>" + data.AA + "</span>" +
+                "<span class='large-text " + large_c + "'><tag>Large text</tag>" + data.AALarge + "</span>" +
             "</div>" +
         "</div>" + 
         "<p class='contrast-meta'>" + meta + "</p>" +
